@@ -15,16 +15,12 @@ jobs:
         uses: actions/setup-node@v4
         with:
           node-version: 20
-          # 删掉 cache: 'pnpm'，不再强制找锁文件
           cache: 'npm'
-
-      - name: Install pnpm
-        run: npm install -g pnpm
 
       - name: build the code     
         run: |
-          pnpm install --no-lockfile
-          pnpm build
+          npm install
+          npm run build
 
       - name: copy file to server
         uses: appleboy/scp-action@master
